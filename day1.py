@@ -1,4 +1,7 @@
-def partone():
+from math import inf
+
+
+def get_topelf(top=inf):
     max = 0
     cal = 0
     with open('data/day1') as f:
@@ -6,7 +9,7 @@ def partone():
             line = line.strip()
         
             if line == "":
-                if cal > max:
+                if cal > max and cal < top:
                     max = cal
                 cal = 0
             else:
@@ -15,8 +18,17 @@ def partone():
     return max
 
 
+def partone():
+    return get_topelf()
+
+
 def parttwo():
-    return None
+    total = 0
+    top = inf
+    for i in range(3):
+        top = get_topelf(top)
+        total += top
+    return total
 
 
 if __name__ == "__main__":
