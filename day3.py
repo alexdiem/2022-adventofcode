@@ -18,7 +18,15 @@ def partone():
 
 
 def parttwo():
-    return None
+    with open('./data/day3') as f:
+        total = 0
+        lines = f.readlines()
+        for i in range(0, len(lines), 3):
+            for letter in lines[i]:
+                if letter in lines[i+1] and letter in lines[i+2]:
+                    total += PRIOS[letter]
+                    break
+    return total
 
 
 if __name__ == "__main__":
