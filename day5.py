@@ -39,7 +39,16 @@ def partone():
 
 
 def parttwo():
-    pass
+    stacks = read_config()
+    instructions = read_instructions()
+
+    for inst in instructions:
+        amount, movefrom, moveto = inst
+        movers = []
+        for i in range(amount):
+            movers.insert(0, stacks[movefrom-1].pop())
+        stacks[moveto-1] += movers
+    return ''.join([stack[-1] for stack in stacks])
 
 
 if __name__ == "__main__":
